@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAJARBOTOL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'VT323', monospace;
+            background-color: #000;
+            color: #00ff00;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .matrix {
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ff00;
+            font-size: 20px;
+            position: absolute;
+            white-space: nowrap;
+            transform-origin: left bottom;
+            animation: fall linear infinite;
+        }
+
+        .snow {
+            position: absolute;
+            top: -10px;
+            width: 1px;
+            height: 1px;
+            background: white;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: snow-fall 10s linear infinite;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 20px 0;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #ff00ff;
+        }
+
+        .typing-container {
+            font-size: 2rem;
+            color: #00ff00;
+            margin-bottom: 30px;
+        }
+
+        .leaf-icon {
+            animation: spin 5s infinite linear;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn {
+            background-color: transparent;
+            border: 2px solid #00ff00;
+            padding: 15px 30px;
+            margin: 10px 0;
+            color: #00ff00;
+            font-size: 1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .btn:hover {
+            background-color: #00ff00;
+            color: #000;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+        }
+
+        .btn:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff00ff;
+            z-index: -1;
+            transition: width 0.4s ease-in-out;
+        }
+
+        .btn:hover:after {
+            width: 100%;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            color: #00ff00;
+            margin: 0 10px;
+            font-size: 2rem;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .social-icons a:hover {
+            color: #ff00ff;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%) rotateX(30deg) rotateY(-45deg) rotateZ(10deg);
+            }
+            100% {
+                transform: translateY(100vh) rotateX(30deg) rotateY(-45deg) rotateZ(10deg);
+            }
+        }
+
+        @keyframes snow-fall {
+            0% {
+                top: -10px;
+                opacity: 0.8;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+            }
+        }
+
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+            }
+            to {
+                text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <!-- Matrix style background -->
+        <div class="matrix" style="left: 10%; animation-duration: 4s;">10101010101010101010</div>
+        <div class="matrix" style="left: 30%; animation-duration: 5s;">01010101010101010101</div>
+        <div class="matrix" style="left: 50%; animation-duration: 3s;">10101010101010101010</div>
+        <div class="matrix" style="left: 70%; animation-duration: 6s;">01010101010101010101</div>
+        <div class="matrix" style="left: 90%; animation-duration: 4.5s;">10101010101010101010</div>
+        <!-- Snowflakes -->
+        <div class="snow" style="left: 20%; animation-duration: 7s;"></div>
+        <div class="snow" style="left: 40%; animation-duration: 10s;"></div>
+        <div class="snow" style="left: 60%; animation-duration: 6s;"></div>
+        <div class="snow" style="left: 80%; animation-duration: 9s;"></div>
+        <div class="snow" style="left: 30%; animation-duration: 11s;"></div>
+    </div>
+    <div class="container">
+        <img src="https://i.ibb.co/Qm0PHyW/image-downloader-1678906565390.png" alt="Leaf Icon" class="leaf-icon" width="100" height="100">
+        <h1>GAJARBOTOL</h1>
+        <h2>I AM A <span id="autotype"></span></h2>
+        <div class="btn-group">
+            <a href="https://m.me/kosto9090" class="btn">Facebook Account</a>
+            <a href="https://m.me/kosto9090" class="btn">Facebook Page</a>
+            <a href="https://github.com/gajarbotol" class="btn">Github Account</a>
+            <a href="https://t.me/gajarbotolx" class="btn">Telegram Channel</a>
+            <a href="https://reshu.rf.gd/tool/app.html" class="btn">All Tools</a>
+        </div>
+        <div class="social-icons">
+            <a href="https://m.me/kosto9090"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://github.com/gajarbotol"><i class="fab fa-github"></i></a>
+            <a href="https://t.me/gajarbotol"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        const phrases = ["HACKER", "GOOD BOY", "CODER", "LEARNER", "JUNIOR DEV"];
+        let i = 0;
+        let j = 0;
+        let currentPhrase = [];
+        let isDeleting = false;
+        let isEnd = false;
+
+        function loop() {
+            isEnd = false;
+            document.getElementById('autotype').innerHTML = currentPhrase.join('');
+
+            if (i < phrases.length) {
+
+                if (!isDeleting && j <= phrases[i].length) {
+                    currentPhrase.push(phrases[i][j]);
+                    j++;
+                    document.getElementById('autotype').innerHTML = currentPhrase.join('');
+                }
+
+                if (isDeleting && j <= phrases[i].length) {
+                    currentPhrase.pop();
+                    j--;
+                    document.getElementById('autotype').innerHTML = currentPhrase.join('');
+                }
+
+                if (j == phrases[i].length) {
+                    isEnd = true;
+                    isDeleting = true;
+                }
+
+                if (isDeleting && j === 0) {
+                    currentPhrase = [];
+                    isDeleting = false;
+                    i++;
+                    if (i === phrases.length) {
+                        i = 0;
+                    }
+                }
+            }
+            const speed = isEnd ? 1000 : isDeleting ? 50 : 150;
+            setTimeout(loop, speed);
+        }
+
+        loop();
+    </script>
+</body>
+                        </html>
