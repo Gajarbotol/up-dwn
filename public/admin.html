@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Upload</title>
+    <style>
+        /* Add any CSS styling you want */
+    </style>
+</head>
+<body>
+    <h1>Upload a File</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="file" id="file-input">
+        <button type="submit">Upload</button>
+    </form>
+    <p id="message"></p>
+
+    <script>
+        const form = document.getElementById('upload-form');
+        const message = document.getElementById('message');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+
+            fetch('/api/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    message.textContent = 'File uploaded successfully!';
+                } else {
+                    message.textContent = 'Error: ' + data.error;
+                }
+            })
+            .catch(err => {
+                message.textContent = 'Error uploading file: ' + err;
+            });
+        });
+    </script>
+</body>
+</html>
