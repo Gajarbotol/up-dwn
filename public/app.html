@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Downloads</title>
+    <style>
+        /* Add any CSS styling you want */
+    </style>
+</head>
+<body>
+    <h1>Available Files</h1>
+    <ul id="file-list"></ul>
+
+    <script>
+        fetch('/api/files')
+            .then(response => response.json())
+            .then(data => {
+                const fileList = document.getElementById('file-list');
+                data.files.forEach(file => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<a href="/uploads/${file.name}" download>${file.name}</a> - ${file.size} bytes - Uploaded on ${new Date(file.uploadTime).toLocaleString()}`;
+                    fileList.appendChild(listItem);
+                });
+            })
+            .catch(err => console.error('Error fetching files:', err));
+    </script>
+</body>
+</html>
